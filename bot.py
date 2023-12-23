@@ -11,7 +11,7 @@ import os
 import platform
 import random
 import sys
-
+import multiprocessing
 import aiosqlite
 import discord
 from discord.ext import commands, tasks
@@ -119,6 +119,18 @@ class DiscordBot(commands.Bot):
                     self.logger.error(
                         f"Failed to load extension {extension}\n{exception}"
                     )
+    async def background_task():
+        """Launched background tasks"""
+        bot.logger.info("Starting background tasks.")
+        #time.sleep(24 * 60 * 60)
+        background_task()
+
+
+    async def run_bot():
+        """Starts the discord bot"""
+        asyncio.run(init_db())
+        asyncio.run(load_cogs())
+        bot.run(token)                    
 
     @tasks.loop(minutes=1.0)
     async def status_task(self) -> None:
@@ -242,5 +254,10 @@ class DiscordBot(commands.Bot):
 
 load_dotenv()
 
-bot = DiscordBot()
-bot.run(os.getenv("TOKEN"))
+# Create processing for the bot and the background tasks
+process_one = multiprocessing.Process(target=run_bot)
+process_two = multiprocessing.Process(target=background_task)
+
+# Start the processes
+process_one.start()
+process_two.start()
