@@ -7,7 +7,6 @@ Version: 6.1.0
 """
 
 import json
-import logging
 import os
 import platform
 import random
@@ -18,6 +17,11 @@ import discord
 from discord.ext import commands, tasks
 from discord.ext.commands import Context
 from dotenv import load_dotenv
+
+from helpers.logger import setup_logger
+
+# Set up the logger
+setup_logger()
 
 from database import DatabaseManager
 
