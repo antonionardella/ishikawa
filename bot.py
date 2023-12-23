@@ -254,10 +254,10 @@ class DiscordBot(commands.Bot):
 
 load_dotenv()
 
-    # Create processing for the bot and the background tasks
-    process_one = multiprocessing.Process(target=DiscordBot.run_bot)
-    process_two = multiprocessing.Process(target=DiscordBot.background_task)
+# Create processing for the bot and the background tasks
+process_one = multiprocessing.Process(target=DiscordBot.run_bot)
+process_two = multiprocessing.Process(target=DiscordBot.background_task)
 
-    # Start the processes
-    process_one.start()
-    process_two.start()
+# Start the processes
+process_one.start()
+process_two.start()
