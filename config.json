@@ -1,4 +1,6 @@
 {
-  "prefix": "YOUR_BOT_PREFIX_HERE",
-  "invite_link": "YOUR_BOT_INVITE_LINK_HERE"
+  "prefix": "$",
+  "invite_link": "",
+  "canary_channel_id": 1183775623924158565,
+  "ping_monitor_list": ["10.0.0.61", "hs01is", "10.0.0.9", "10.0.0.99" ]
 }
